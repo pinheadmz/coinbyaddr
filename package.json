@@ -1,0 +1,34 @@
+{
+  "name": "coinbyaddr",
+  "version": "1.0.0",
+  "description": "bcoin plugin to get UTXO by address",
+  "main": "coinbyaddr.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pinheadmz/coinbyaddr.git"
+  },
+  "keywords": [
+    "bcoin",
+    "bitcoin",
+    "utxo"
+  ],
+  "author": "Matthew Zipkin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pinheadmz/coinbyaddr/issues"
+  },
+  "homepage": "https://github.com/pinheadmz/coinbyaddr#readme",
+  "dependencies": {
+    "bval": "^0.1.6",
+    "bweb": "^0.1.10"
+  },
+  "peerDependencies": {
+    "bcoin": "bcoin-org/bcoin"
+  },
+  "devDependencies": {
+    "bmocha": "^2.1.2"
+  },
+  "scripts": {
+    "test": "bmocha --reporter spec test/*.js"
+  }
+}
