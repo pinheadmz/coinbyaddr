@@ -14,6 +14,10 @@ class Plugin {
     this.node = node;
 
     this.http = new HTTP(this.node);
+
+    this.http.on('error', (err) => {
+      console.log(err);
+    });
   }
 
   async open() {
