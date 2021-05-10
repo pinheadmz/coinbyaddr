@@ -43,19 +43,6 @@ $ curl 127.0.0.1:8332/coinbyaddr/bc1qssgxyn37emr3dejxl5v49jepp68rtmcxzr52at
 ]
 ```
 
-#### API
-
-The parameters accepted by this API call are identical to
-["get TX by address"](https://bcoin.io/api-docs/#get-tx-by-address):
-
-| param | type | default | description |
-|-|-|-|-|
-| address | _string_ | | (required) Bitcoin address (base58 or bech32) |
-| after | _string_ | | A txid to include transactions after, this is often the last txid of a previous query |
-| limit | _number_ | `100` | The maximum number of transactions to retrieve (number of coins returned may be greater) max: `100` |
-| reverse | _boolean_ | `false` | Reverse the order of transactions, default is false and from oldest to latest |
-
-
 #### Notes on limitations
 
 The original `coins-by-address` API had
@@ -68,7 +55,9 @@ transactions and keep resource usage low. This plugin combines that API with the
 [`coins-by-outpoint`](https://bcoin.io/api-docs/#get-coin-by-outpoint) API to get
 unspent TX outputs by address.
 
-It is important to note that this plugin only returns UTXO for the **most recent 100
-transactions**, and pagination is required to obtain more results.
+The plugin requests `txs-by-address` internally and paginates automatically
+while checking for unspent outputs. When it stops getting new transactions by
+paginating, it returns the array of coins. For this reason, the `cooinbyaddr`
+endpoint may take a long time to return, and may return a huge amount of data.
 
 
